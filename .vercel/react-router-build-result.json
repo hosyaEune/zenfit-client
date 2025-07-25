@@ -1,0 +1,150 @@
+{
+  "buildManifest": {
+    "serverBundles": {
+      "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0": {
+        "id": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+        "file": "build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js",
+        "config": {
+          "runtime": "nodejs"
+        }
+      }
+    },
+    "routeIdToServerBundleId": {
+      "../pages/home/ui/Home": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "../proccesses/Workout/ui/Workout": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "../proccesses/InitCollectionInformation/ui/InitCollectionInformation": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "../pages/History/ui/History": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "../pages/Settings/ui/Settings": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "../pages/Report/ui/Report": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0"
+    },
+    "routes": {
+      "root": {
+        "path": "",
+        "id": "root",
+        "file": "src/app/root.tsx",
+        "config": {}
+      },
+      "../pages/home/ui/Home": {
+        "id": "../pages/home/ui/Home",
+        "parentId": "root",
+        "file": "src/pages/home/ui/Home.tsx",
+        "index": true,
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "../proccesses/Workout/ui/Workout": {
+        "id": "../proccesses/Workout/ui/Workout",
+        "parentId": "root",
+        "file": "src/proccesses/Workout/ui/Workout.tsx",
+        "path": "/workout/:id",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "../proccesses/InitCollectionInformation/ui/InitCollectionInformation": {
+        "id": "../proccesses/InitCollectionInformation/ui/InitCollectionInformation",
+        "parentId": "root",
+        "file": "src/proccesses/InitCollectionInformation/ui/InitCollectionInformation.tsx",
+        "path": "/collection-information",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "../pages/History/ui/History": {
+        "id": "../pages/History/ui/History",
+        "parentId": "root",
+        "file": "src/pages/History/ui/History.tsx",
+        "path": "/history",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "../pages/Settings/ui/Settings": {
+        "id": "../pages/Settings/ui/Settings",
+        "parentId": "root",
+        "file": "src/pages/Settings/ui/Settings.tsx",
+        "path": "/settings",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "../pages/Report/ui/Report": {
+        "id": "../pages/Report/ui/Report",
+        "parentId": "root",
+        "file": "src/pages/Report/ui/Report.tsx",
+        "path": "/report",
+        "config": {
+          "runtime": "nodejs"
+        }
+      }
+    }
+  },
+  "reactRouterConfig": {
+    "appDirectory": "D:/zenfit-router/client/src/app",
+    "basename": "/",
+    "buildDirectory": "D:/zenfit-router/client/build",
+    "future": {
+      "unstable_middleware": false,
+      "unstable_optimizeDeps": false,
+      "unstable_splitRouteModules": false,
+      "unstable_subResourceIntegrity": false,
+      "unstable_viteEnvironmentApi": false
+    },
+    "routes": {
+      "root": {
+        "path": "",
+        "id": "root",
+        "file": "root.tsx"
+      },
+      "../pages/home/ui/Home": {
+        "id": "../pages/home/ui/Home",
+        "parentId": "root",
+        "file": "../pages/home/ui/Home.tsx",
+        "index": true
+      },
+      "../proccesses/Workout/ui/Workout": {
+        "id": "../proccesses/Workout/ui/Workout",
+        "parentId": "root",
+        "file": "../proccesses/Workout/ui/Workout.tsx",
+        "path": "/workout/:id"
+      },
+      "../proccesses/InitCollectionInformation/ui/InitCollectionInformation": {
+        "id": "../proccesses/InitCollectionInformation/ui/InitCollectionInformation",
+        "parentId": "root",
+        "file": "../proccesses/InitCollectionInformation/ui/InitCollectionInformation.tsx",
+        "path": "/collection-information"
+      },
+      "../pages/History/ui/History": {
+        "id": "../pages/History/ui/History",
+        "parentId": "root",
+        "file": "../pages/History/ui/History.tsx",
+        "path": "/history"
+      },
+      "../pages/Settings/ui/Settings": {
+        "id": "../pages/Settings/ui/Settings",
+        "parentId": "root",
+        "file": "../pages/Settings/ui/Settings.tsx",
+        "path": "/settings"
+      },
+      "../pages/Report/ui/Report": {
+        "id": "../pages/Report/ui/Report",
+        "parentId": "root",
+        "file": "../pages/Report/ui/Report.tsx",
+        "path": "/report"
+      }
+    },
+    "routeDiscovery": {
+      "mode": "lazy",
+      "manifestPath": "/__manifest"
+    },
+    "serverBuildFile": "index.js",
+    "serverModuleFormat": "esm",
+    "ssr": true
+  },
+  "viteConfig": {
+    "build": {
+      "assetsDir": "assets"
+    }
+  }
+}
