@@ -1,3 +1,3 @@
-import History from './History.tsx'
+import History from "./History";
 
-export { History }
+export { History };

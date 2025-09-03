@@ -1,3 +1,3 @@
-import WorkoutExercise from './WorkoutExercise.tsx'
+import WorkoutExercise from "./WorkoutExercise";
 
-export { WorkoutExercise }
+export { WorkoutExercise };

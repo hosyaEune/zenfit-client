@@ -1,3 +1,3 @@
-import WorkoutRow from './WorkoutRow.tsx'
+import WorkoutRow from "./WorkoutRow";
 
-export { WorkoutRow }
+export { WorkoutRow };

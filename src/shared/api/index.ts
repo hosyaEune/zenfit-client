@@ -1,7 +1,7 @@
-import { ITEMS, SETTINGS, USER } from "./mock";
+import { PROGRAM, SETTINGS, USER } from "./mock";
 import type { Settings, Workout, User as UserType } from "./model";
 
-const getExercises = async (): Promise<Workout[]> => ITEMS;
+const getExercises = async (): Promise<Workout[]> => PROGRAM;
 
 const getSettings = async (): Promise<Settings> => SETTINGS;
 

@@ -1,3 +1,3 @@
-import InitCollectionInformation from './InitCollectionInformation.tsx'
+import InitCollectionInformation from "./InitCollectionInformation";
 
-export { InitCollectionInformation }
+export { InitCollectionInformation };

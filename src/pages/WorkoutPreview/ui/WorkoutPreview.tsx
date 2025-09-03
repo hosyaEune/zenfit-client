@@ -8,13 +8,13 @@ type Props = {
   onClick: () => void;
 } & Workout;
 
-export default function WorkoutPreview({ onClick, image, name, sets }: Props) {
+export default function WorkoutPreview({ onClick, image, title, sets }: Props) {
   return (
     <Flex direction="column" flex={1} overflow="hidden">
       <Header image={image} />
       <PageWithPadding flex={1}>
         <Heading lineHeight={1.33} fontSize="3xl" fontWeight="bold">
-          {name}
+          {title}
         </Heading>
         <Box
           flex={1}

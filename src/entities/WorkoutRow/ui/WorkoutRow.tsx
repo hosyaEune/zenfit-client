@@ -6,11 +6,11 @@ import { TimeHelper } from "@/shared/helpers/Time";
 
 type Props = Pick<
   Workout,
-  "name" | "averageDurationSeconds" | "difficulty" | "image"
+  "title" | "averageDurationSeconds" | "difficulty" | "image"
 >;
 
 export default function WorkoutRow({
-  name,
+  title,
   difficulty,
   averageDurationSeconds,
   image,
@@ -41,7 +41,7 @@ export default function WorkoutRow({
         textShadow="2px 2px 5px rgba(0, 0, 0, 0.5)"
       >
         <Text fontSize="2xl" lineClamp={1}>
-          {name}
+          {title}
         </Text>
         <Flex gap={2} fontSize="sm">
           <Text>{TimeHelper.formatDuration(averageDurationSeconds)}</Text>

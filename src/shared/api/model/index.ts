@@ -45,7 +45,8 @@ export type WorkoutSet = {
 // Вся тренировка
 export type Workout = {
   id: number;
-  name: string;
+  title: string;
+  day: string;
   averageDurationSeconds: number;
   difficulty: WorkoutDifficulty;
   image: ExerciseImage;

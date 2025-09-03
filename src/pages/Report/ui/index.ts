@@ -1,3 +1,3 @@
-import Report from './Report.tsx'
+import Report from "./Report";
 
-export { Report }
+export { Report };

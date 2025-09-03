@@ -1,3 +1,3 @@
-import WorkoutCogratulations from './WorkoutCogratulations.tsx'
+import WorkoutCogratulations from "./WorkoutCogratulations";
 
-export { WorkoutCogratulations }
+export { WorkoutCogratulations };

@@ -1,3 +1,3 @@
-import SetItem from './SetItem.tsx'
+import SetItem from "./SetItem";
 
-export { SetItem }
+export { SetItem };

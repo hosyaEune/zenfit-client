@@ -1,3 +1,3 @@
-import SetList from './SetList.tsx'
+import SetList from "./SetList";
 
-export { SetList }
+export { SetList };
