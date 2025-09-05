@@ -18,9 +18,10 @@ registerRoute(
 );
 
 registerRoute(
-  ({ request }) => request.destination === "image",
+  ({ request }) =>
+    request.destination === "image" || request.destination === "video",
   new CacheFirst({
-    cacheName: "images",
+    cacheName: "media",
     plugins: [
       new CacheableResponsePlugin({
         statuses: [0, 200],

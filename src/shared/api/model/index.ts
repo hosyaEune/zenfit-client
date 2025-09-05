@@ -7,6 +7,8 @@ export enum WorkoutDifficulty {
   Elite = "elite",
 }
 
+export type ExerciseSide = "left" | "right" | "both";
+
 // Картинка (можно расширять до ImageWithAlt или ImageWithMeta)
 export type ExerciseImage = {
   src: string;
@@ -29,6 +31,7 @@ export type Exercise = {
 type CommonSetExercise = {
   exercise: Exercise;
   count: number;
+  side?: ExerciseSide;
 };
 
 // Унифицированный тип упражнения в подходе (по времени или по повторениям)

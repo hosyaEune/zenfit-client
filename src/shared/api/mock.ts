@@ -9,7 +9,6 @@ export const SETTINGS = {
   restId: REST_ID,
 };
 
-// --- Справочник упражнений (без «заглушек», все с MET):
 const EX: Record<string, Exercise> = {
   chinTuck: {
     id: 1,
@@ -110,30 +109,15 @@ const EX: Record<string, Exercise> = {
       src: "https://fra.cloud.appwrite.io/v1/storage/buckets/68b9dad50020cc7cea82/files/dead_bug/view?project=68b9dabf00211a8552c2",
     },
   },
-  sidePlankLeft: {
+  sidePlank: {
     id: 12,
-    name: "side plank (left)",
+    name: "side plank",
     image: { src: "side_plank.jpg", lqip: 10 },
     met: 3.0,
   },
-  sidePlankRight: {
-    id: 13,
-    name: "side plank (right)",
-    image: { src: "side_plank.jpg", lqip: 10 },
-    met: 3.0,
-  },
-  pallofLeft: {
+  pallof: {
     id: 14,
-    name: "Pallof press band (left)",
-    image: { src: "pallof_press_band.jpg", lqip: 10 },
-    met: 3.5,
-    video: {
-      src: "https://fra.cloud.appwrite.io/v1/storage/buckets/68b9dad50020cc7cea82/files/pallof_press_band/view?project=68b9dabf00211a8552c2",
-    },
-  },
-  pallofRight: {
-    id: 15,
-    name: "Pallof press band (right)",
+    name: "Pallof press band",
     image: { src: "pallof_press_band.jpg", lqip: 10 },
     met: 3.5,
     video: {
@@ -149,18 +133,9 @@ const EX: Record<string, Exercise> = {
       src: "https://fra.cloud.appwrite.io/v1/storage/buckets/68b9dad50020cc7cea82/files/romanian_deadlift_barbell/view?project=68b9dabf00211a8552c2",
     },
   },
-  rowDbLeft: {
+  rowDb: {
     id: 17,
-    name: "one arm db row (left)",
-    image: { src: "one_arm_db_row.jpg", lqip: 10 },
-    met: 5.0,
-    video: {
-      src: "https://fra.cloud.appwrite.io/v1/storage/buckets/68b9dad50020cc7cea82/files/one_arm_db_row/view?project=68b9dabf00211a8552c2",
-    },
-  },
-  rowDbRight: {
-    id: 18,
-    name: "one arm db row (right)",
+    name: "one arm db row",
     image: { src: "one_arm_db_row.jpg", lqip: 10 },
     met: 5.0,
     video: {
@@ -185,18 +160,9 @@ const EX: Record<string, Exercise> = {
       src: "https://fra.cloud.appwrite.io/v1/storage/buckets/68b9dad50020cc7cea82/files/goblet_squat/view?project=68b9dabf00211a8552c2",
     },
   },
-  hamStretchLeft: {
+  hamStretch: {
     id: 18,
-    name: "supine hamstring stretch (left)",
-    image: { src: "supine_hamstring_stretch.jpg", lqip: 10 },
-    met: 2.3,
-    video: {
-      src: "https://fra.cloud.appwrite.io/v1/storage/buckets/68b9dad50020cc7cea82/files/supine_hamstring_stretch/view?project=68b9dabf00211a8552c2",
-    },
-  },
-  hamStretchRight: {
-    id: 19,
-    name: "supine hamstring stretch (right)",
+    name: "supine hamstring stretch",
     image: { src: "supine_hamstring_stretch.jpg", lqip: 10 },
     met: 2.3,
     video: {
@@ -227,18 +193,9 @@ const EX: Record<string, Exercise> = {
       src: "https://fra.cloud.appwrite.io/v1/storage/buckets/68b9dad50020cc7cea82/files/scapular_pushup/view?project=68b9dabf00211a8552c2",
     },
   },
-  extRotBandLeft: {
+  extRotBand: {
     id: 23,
-    name: "band external rotation (left)",
-    image: { src: "band_external_rotation.jpg", lqip: 10 },
-    met: 2.8,
-    video: {
-      src: "https://fra.cloud.appwrite.io/v1/storage/buckets/68b9dad50020cc7cea82/files/band_external_rotation/view?project=68b9dabf00211a8552c2",
-    },
-  },
-  extRotBandRight: {
-    id: 24,
-    name: "band external rotation (right)",
+    name: "band external rotation",
     image: { src: "band_external_rotation.jpg", lqip: 10 },
     met: 2.8,
     video: {
@@ -269,18 +226,9 @@ const EX: Record<string, Exercise> = {
       src: "https://fra.cloud.appwrite.io/v1/storage/buckets/68b9dad50020cc7cea82/files/standing_calf_raise/view?project=68b9dabf00211a8552c2",
     },
   },
-  openBookLeft: {
+  openBook: {
     id: 28,
-    name: "open book t-spine (left)",
-    image: { src: "open_book_tspine.jpg", lqip: 10 },
-    met: 2.5,
-    video: {
-      src: "https://fra.cloud.appwrite.io/v1/storage/buckets/68b9dad50020cc7cea82/files/open_book_tspine/view?project=68b9dabf00211a8552c2",
-    },
-  },
-  openBookRight: {
-    id: 29,
-    name: "open book t-spine (right)",
+    name: "open book t-spine",
     image: { src: "open_book_tspine.jpg", lqip: 10 },
     met: 2.5,
     video: {
@@ -313,9 +261,6 @@ const EX: Record<string, Exercise> = {
   },
 };
 
-// --- Распределение по дням недели:
-
-// Ежедневная утренняя (15 минут до еды, низкая интенсивность, вода — обязательно)
 const workoutDailyAM: Workout = {
   id: 101,
   title: "AM-15: мобилизация + осанка (ежедневно)",
@@ -330,14 +275,25 @@ const workoutDailyAM: Workout = {
         { type: "reps", exercise: EX.chinTuck, count: 12 },
         { type: "reps", exercise: EX.wallSlides, count: 12 },
         { type: "reps", exercise: EX.pullApart, count: 15 },
-        { type: "reps", exercise: EX.birdDog, count: 20 }, // по 10 на сторону, попеременно
+        { type: "reps", exercise: EX.birdDog, count: 20 },
       ],
       restSeconds: 30,
       repeatCount: 2,
     },
     {
       exercises: [
-        { type: "time", exercise: EX.hipFlexorStretch, count: 60 }, // суммарно обе стороны
+        {
+          type: "time",
+          exercise: EX.hipFlexorStretch,
+          count: 30,
+          side: "left",
+        },
+        {
+          type: "time",
+          exercise: EX.hipFlexorStretch,
+          count: 30,
+          side: "right",
+        },
         { type: "time", exercise: EX.chestDoor, count: 60 },
         { type: "time", exercise: EX.thoracicTowel, count: 60 },
       ],
@@ -347,7 +303,6 @@ const workoutDailyAM: Workout = {
   ],
 };
 
-// Ежедневная вечерняя (15 минут, лёгкая аэробика + растяжка)
 const workoutDailyPM: Workout = {
   id: 102,
   title: "PM-15: ходьба Zone 2 + растяжка (ежедневно)",
@@ -357,15 +312,15 @@ const workoutDailyPM: Workout = {
   averageDurationSeconds: 60 * 15,
   sets: [
     {
-      exercises: [{ type: "time", exercise: EX.briskWalk, count: 12 * 60 }], // 12 минут
+      exercises: [{ type: "time", exercise: EX.briskWalk, count: 12 * 60 }],
       restSeconds: 0,
       repeatCount: 1,
     },
     {
       exercises: [
         { type: "time", exercise: EX.chestDoor, count: 60 },
-        { type: "time", exercise: EX.hamStretchLeft, count: 30 },
-        { type: "time", exercise: EX.hamStretchRight, count: 30 },
+        { type: "time", exercise: EX.hamStretch, count: 30, side: "left" },
+        { type: "time", exercise: EX.hamStretch, count: 30, side: "right" },
       ],
       restSeconds: 0,
       repeatCount: 1,
@@ -384,12 +339,12 @@ const workoutMon30: Workout = {
   sets: [
     {
       exercises: [
-        { type: "time", exercise: EX.openBookLeft, count: 15 },
-        { type: "time", exercise: EX.openBookRight, count: 15 },
+        { type: "time", exercise: EX.openBook, count: 15, side: "left" },
+        { type: "time", exercise: EX.openBook, count: 15, side: "right" },
         { type: "time", exercise: EX.hipHingeRock, count: 45 },
         { type: "reps", exercise: EX.scapPushup, count: 12 },
-        { type: "reps", exercise: EX.extRotBandLeft, count: 15 },
-        { type: "reps", exercise: EX.extRotBandRight, count: 15 },
+        { type: "reps", exercise: EX.extRotBand, count: 15, side: "left" },
+        { type: "reps", exercise: EX.extRotBand, count: 15, side: "right" },
       ],
       restSeconds: 30,
       repeatCount: 1,
@@ -397,20 +352,20 @@ const workoutMon30: Workout = {
     {
       exercises: [
         { type: "reps", exercise: EX.gluteBridge, count: 12 },
-        { type: "reps", exercise: EX.pallofLeft, count: 10 }, // по 10 на сторону
-        { type: "reps", exercise: EX.pallofRight, count: 10 }, // по 10 на сторону
-        { type: "reps", exercise: EX.rowDbLeft, count: 12 }, // 12 на каждую сторону
-        { type: "reps", exercise: EX.rowDbRight, count: 12 }, // 12 на каждую сторону
-        { type: "reps", exercise: EX.rdlBar, count: 10 }, // лёгкий вес, техника
+        { type: "reps", exercise: EX.pallof, side: "left", count: 10 },
+        { type: "reps", exercise: EX.pallof, side: "right", count: 10 },
+        { type: "reps", exercise: EX.rowDb, side: "left", count: 12 },
+        { type: "reps", exercise: EX.rowDb, side: "right", count: 12 },
+        { type: "reps", exercise: EX.rdlBar, count: 10 },
       ],
       restSeconds: 75,
       repeatCount: 2,
     },
     {
       exercises: [
-        { type: "reps", exercise: EX.deadBug, count: 20 }, // по 10 на сторону
-        { type: "time", exercise: EX.sidePlankLeft, count: 30 }, // 30 с на сторону
-        { type: "time", exercise: EX.sidePlankRight, count: 30 }, // 30 с на сторону
+        { type: "reps", exercise: EX.deadBug, count: 20 },
+        { type: "time", exercise: EX.sidePlank, side: "left", count: 30 },
+        { type: "time", exercise: EX.sidePlank, side: "right", count: 30 },
       ],
       restSeconds: 30,
       repeatCount: 1,
@@ -418,7 +373,6 @@ const workoutMon30: Workout = {
   ],
 };
 
-// Среда — полная 60 мин (тягущие/лопатки + кор)
 const workoutWed60: Workout = {
   id: 301,
   title: "СР-60: осанка — спина/лопатки + кор",
@@ -430,18 +384,29 @@ const workoutWed60: Workout = {
     {
       exercises: [
         { type: "time", exercise: EX.catCow, count: 40 },
-        { type: "time", exercise: EX.openBookLeft, count: 20 },
-        { type: "time", exercise: EX.openBookRight, count: 20 },
+        { type: "time", exercise: EX.openBook, side: "left", count: 20 },
+        { type: "time", exercise: EX.openBook, side: "right", count: 20 },
         { type: "time", exercise: EX.thoracicTowel, count: 60 },
-        { type: "time", exercise: EX.hipFlexorStretch, count: 60 },
+        {
+          type: "time",
+          exercise: EX.hipFlexorStretch,
+          count: 30,
+          side: "left",
+        },
+        {
+          type: "time",
+          exercise: EX.hipFlexorStretch,
+          count: 30,
+          side: "right",
+        },
       ],
       restSeconds: 30,
       repeatCount: 1,
     },
     {
       exercises: [
-        { type: "reps", exercise: EX.extRotBandLeft, count: 15 },
-        { type: "reps", exercise: EX.extRotBandRight, count: 15 },
+        { type: "reps", exercise: EX.extRotBand, side: "left", count: 15 },
+        { type: "reps", exercise: EX.extRotBand, side: "right", count: 15 },
         { type: "reps", exercise: EX.wallSlides, count: 12 },
         { type: "reps", exercise: EX.scapPushup, count: 12 },
         { type: "reps", exercise: EX.pullApart, count: 15 },
@@ -451,10 +416,10 @@ const workoutWed60: Workout = {
     },
     {
       exercises: [
-        { type: "reps", exercise: EX.rowDbLeft, count: 12 }, // 12/12
-        { type: "reps", exercise: EX.rowDbRight, count: 12 }, // 12/12
+        { type: "reps", exercise: EX.rowDb, side: "left", count: 12 },
+        { type: "reps", exercise: EX.rowDb, side: "right", count: 12 },
         { type: "reps", exercise: EX.rdlBar, count: 10 },
-        { type: "reps", exercise: EX.revLunge, count: 20 }, // 10/10
+        { type: "reps", exercise: EX.revLunge, count: 20 },
         { type: "reps", exercise: EX.gluteBridge, count: 15 },
       ],
       restSeconds: 75,
@@ -472,10 +437,10 @@ const workoutWed60: Workout = {
     {
       exercises: [
         { type: "time", exercise: EX.frontPlank, count: 45 },
-        { type: "reps", exercise: EX.pallofLeft, count: 12 }, // 12/12
-        { type: "reps", exercise: EX.pallofRight, count: 12 }, // 12/12
-        { type: "time", exercise: EX.sidePlankLeft, count: 30 }, // 30/30
-        { type: "time", exercise: EX.sidePlankRight, count: 30 }, // 30/30
+        { type: "reps", exercise: EX.pallof, side: "left", count: 12 },
+        { type: "reps", exercise: EX.pallof, side: "right", count: 12 },
+        { type: "time", exercise: EX.sidePlank, side: "left", count: 30 },
+        { type: "time", exercise: EX.sidePlank, side: "right", count: 30 },
       ],
       restSeconds: 45,
       repeatCount: 2,
@@ -483,7 +448,6 @@ const workoutWed60: Workout = {
   ],
 };
 
-// Пятница — полная 60 мин (низ + паттерн «хинж»)
 const workoutFri60: Workout = {
   id: 302,
   title: "ПТ-60: нижняя часть + техника хип-хинжа",
@@ -495,10 +459,21 @@ const workoutFri60: Workout = {
     {
       exercises: [
         { type: "time", exercise: EX.hipHingeRock, count: 60 },
-        { type: "time", exercise: EX.hipFlexorStretch, count: 60 },
+        {
+          type: "time",
+          exercise: EX.hipFlexorStretch,
+          count: 30,
+          side: "left",
+        },
+        {
+          type: "time",
+          exercise: EX.hipFlexorStretch,
+          count: 30,
+          side: "right",
+        },
         { type: "time", exercise: EX.catCow, count: 40 },
-        { type: "time", exercise: EX.hamStretchLeft, count: 30 },
-        { type: "time", exercise: EX.hamStretchRight, count: 30 },
+        { type: "time", exercise: EX.hamStretch, side: "left", count: 30 },
+        { type: "time", exercise: EX.hamStretch, side: "right", count: 30 },
       ],
       restSeconds: 30,
       repeatCount: 1,
@@ -515,7 +490,7 @@ const workoutFri60: Workout = {
     {
       exercises: [
         { type: "reps", exercise: EX.gluteBridge, count: 15 },
-        { type: "reps", exercise: EX.birdDog, count: 20 }, // 10/10
+        { type: "reps", exercise: EX.birdDog, count: 20 },
         { type: "reps", exercise: EX.deadBug, count: 20 },
         { type: "time", exercise: EX.reversePlank, count: 40 },
       ],
@@ -541,8 +516,8 @@ const workoutSun60: Workout = {
   sets: [
     {
       exercises: [
-        { type: "time", exercise: EX.openBookLeft, count: 30 },
-        { type: "time", exercise: EX.openBookRight, count: 30 },
+        { type: "time", exercise: EX.openBook, side: "left", count: 30 },
+        { type: "time", exercise: EX.openBook, side: "right", count: 30 },
         { type: "reps", exercise: EX.chinTuck, count: 12 },
         { type: "reps", exercise: EX.wallSlides, count: 12 },
       ],
@@ -551,8 +526,8 @@ const workoutSun60: Workout = {
     },
     {
       exercises: [
-        { type: "reps", exercise: EX.rowDbLeft, count: 12 },
-        { type: "reps", exercise: EX.rowDbRight, count: 12 },
+        { type: "reps", exercise: EX.rowDb, side: "left", count: 12 },
+        { type: "reps", exercise: EX.rowDb, side: "right", count: 12 },
         { type: "reps", exercise: EX.facePull, count: 15 },
         { type: "reps", exercise: EX.pullApart, count: 15 },
         { type: "reps", exercise: EX.wallSlides, count: 12 },
@@ -571,11 +546,11 @@ const workoutSun60: Workout = {
     },
     {
       exercises: [
-        { type: "reps", exercise: EX.pallofLeft, count: 12 },
-        { type: "reps", exercise: EX.pallofRight, count: 12 },
-        { type: "time", exercise: EX.hollowHold, count: 20 }, // короткие качественные удержания
-        { type: "time", exercise: EX.sidePlankLeft, count: 30 },
-        { type: "time", exercise: EX.sidePlankRight, count: 30 },
+        { type: "reps", exercise: EX.pallof, side: "left", count: 12 },
+        { type: "reps", exercise: EX.pallof, side: "right", count: 12 },
+        { type: "time", exercise: EX.hollowHold, count: 20 },
+        { type: "time", exercise: EX.sidePlank, side: "left", count: 30 },
+        { type: "time", exercise: EX.sidePlank, side: "right", count: 30 },
       ],
       restSeconds: 45,
       repeatCount: 2,
@@ -588,7 +563,6 @@ const workoutSun60: Workout = {
   ],
 };
 
-// --- Итоговая программа:
 export const PROGRAM: Workout[] = [
   workoutDailyAM,
   workoutDailyPM,

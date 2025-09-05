@@ -2,15 +2,7 @@ import type { Workout } from "@/shared/api/model";
 import { ImageWithLQIP } from "@/shared/ui/ImageWithLQIP";
 import { PageWithHeader } from "@/shared/ui/PageWithHeader";
 import { PageWithPadding } from "@/shared/ui/PageWithPadding";
-import {
-  Box,
-  Button,
-  Flex,
-  Progress,
-  Span,
-  Tabs,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Progress, Span, Text } from "@chakra-ui/react";
 import { AiOutlineClose } from "react-icons/ai";
 import ButtonSoundController from "./ButtonSoundController";
 import { DoneButton } from "./DoneButton";
@@ -35,6 +27,7 @@ export default function WorkoutExercise(props: Props) {
     onFinish,
     onSkip,
     onPrev,
+    side,
   } = props;
 
   const isFirstExercive = currentExercise === 0;
@@ -65,7 +58,7 @@ export default function WorkoutExercise(props: Props) {
         }
         rightElement={<ButtonSoundController />}
       >
-        <MediaWithTabs image={image} video={video} />
+        <MediaWithTabs key={name} image={image} video={video} />
         <Flex
           direction="column"
           justifyContent="space-between"
@@ -79,7 +72,7 @@ export default function WorkoutExercise(props: Props) {
               _firstLetter={{ textTransform: "uppercase" }}
               lineClamp={1}
             >
-              {name}
+              {`${name}${side ? ` (${side})` : ""}`}
             </Text>
           </Box>
           <DoneButton {...props} key={currentExercise} />

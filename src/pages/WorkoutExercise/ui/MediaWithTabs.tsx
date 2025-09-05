@@ -18,7 +18,7 @@ export const MediaWithTabs: FC<Props> = ({ image, video }) => {
       unmountOnExit={true}
       colorScheme="blue"
       size="lg"
-      // TODO: добавить тип
+      // TODO: добавить тип и назвать нормально
       variant={"pill" as never}
       colorPalette="blue"
       mt="6"
@@ -32,7 +32,7 @@ export const MediaWithTabs: FC<Props> = ({ image, video }) => {
         </Tabs.Trigger>
       </Tabs.List>
       <Tabs.Content value="image">
-        <Box padding={4}>
+        <Box padding={4} width="100%" aspectRatio="1/1" overflow="hidden">
           <ImageWithLQIP
             {...image}
             alt="exercive image"
@@ -43,7 +43,7 @@ export const MediaWithTabs: FC<Props> = ({ image, video }) => {
       </Tabs.Content>
       <Tabs.Content value="video">
         {video && (
-          <Box padding={4}>
+          <Box padding={4} width="100%" aspectRatio="1/1" overflow="hidden">
             <chakra.video
               src={video.src}
               loop={true}
