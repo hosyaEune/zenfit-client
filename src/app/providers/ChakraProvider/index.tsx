@@ -5,6 +5,7 @@ import {
   defaultConfig,
 } from "@chakra-ui/react";
 import "@fontsource/roboto/400.css";
+import { tabsSlotRecipe } from "./tabs";
 
 const system = createSystem(defaultConfig, {
   theme: {
@@ -13,6 +14,9 @@ const system = createSystem(defaultConfig, {
         heading: { value: "Roboto" },
         body: { value: "Roboto" },
       },
+    },
+    slotRecipes: {
+      tabs: tabsSlotRecipe,
     },
   },
 });

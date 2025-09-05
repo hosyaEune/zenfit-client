@@ -13,11 +13,16 @@ export type ExerciseImage = {
   lqip: number;
 };
 
+export type ExerciseVideo = {
+  src: string;
+};
+
 // Конкретное упражнение
 export type Exercise = {
   id: number;
   name: string;
   image: ExerciseImage;
+  video?: ExerciseVideo;
   met: number;
 };
 

@@ -2,10 +2,19 @@ import type { Workout } from "@/shared/api/model";
 import { ImageWithLQIP } from "@/shared/ui/ImageWithLQIP";
 import { PageWithHeader } from "@/shared/ui/PageWithHeader";
 import { PageWithPadding } from "@/shared/ui/PageWithPadding";
-import { Box, Button, Flex, Progress, Span, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Progress,
+  Span,
+  Tabs,
+  Text,
+} from "@chakra-ui/react";
 import { AiOutlineClose } from "react-icons/ai";
 import ButtonSoundController from "./ButtonSoundController";
 import { DoneButton } from "./DoneButton";
+import { MediaWithTabs } from "./MediaWithTabs";
 
 export type Props = {
   countExercises: number;
@@ -19,7 +28,7 @@ export type Props = {
 
 export default function WorkoutExercise(props: Props) {
   const {
-    exercise: { image, name },
+    exercise: { image, name, video },
     currentExercise,
     countExercises,
     onCancel,
@@ -56,14 +65,7 @@ export default function WorkoutExercise(props: Props) {
         }
         rightElement={<ButtonSoundController />}
       >
-        <Box padding={4}>
-          <ImageWithLQIP
-            {...image}
-            alt="exercive image"
-            maxWidth="100%"
-            aspectRatio="1/1"
-          />
-        </Box>
+        <MediaWithTabs image={image} video={video} />
         <Flex
           direction="column"
           justifyContent="space-between"
