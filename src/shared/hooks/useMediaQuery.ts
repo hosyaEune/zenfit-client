@@ -18,7 +18,6 @@ export function useMediaQuery(query: string): boolean {
     const mediaQueryList = window.matchMedia(query);
 
     const listener = (event: MediaQueryListEvent) => {
-      console.log("zdec change");
       setMatches(event.matches);
     };
 

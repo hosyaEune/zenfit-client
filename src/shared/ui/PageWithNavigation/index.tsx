@@ -63,7 +63,7 @@ export const PageWithNavigation: FC<Props> = ({ children }) => {
               key={title}
               as={Link}
               flex={1}
-              flexDirection="column"
+              direction="column"
               paddingY={8}
               variant="ghost"
               onClick={() => setActivateButton(title)}

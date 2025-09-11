@@ -152,16 +152,13 @@ export default function ButtonSoundController() {
       },
     })
       .then(() => {
-        console.log(cacheValues);
         Object.values(cacheValues).forEach(({ value, onChange }) => {
           onChange(value);
         });
 
         App.getInstance().saveSettings();
       })
-      .catch(() => {
-        console.log("zdec cancel");
-      });
+      .catch(() => {});
   };
 
   return (

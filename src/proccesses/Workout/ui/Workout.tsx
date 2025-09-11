@@ -82,9 +82,10 @@ export default function Workout() {
   const { id } = params;
   const { allExercise, restCount, workout } = useGetWorkoutById(id ?? "0");
 
-  if (currentExerciseIndex > allExercise.length - 1) {
+  if (workout && currentExerciseIndex > allExercise.length - 1) {
     return (
       <WorkoutCogratulations
+        workout={workout}
         expendSeconds={TimeHelper.getMinutes(
           (Number(new Date()) - Number(startDate.current)) / 1000
         )}

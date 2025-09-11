@@ -259,6 +259,12 @@ const EX: Record<string, Exercise> = {
     image: { src: "elbow_plank.jpg", lqip: 10 },
     met: 3.5,
   },
+  vacuum: {
+    id: 33,
+    name: "Vacuum",
+    image: { lqip: 173538, src: "/Vacuum.png" },
+    met: 2.2,
+  },
 };
 
 const workoutDailyAM: Workout = {
@@ -563,7 +569,24 @@ const workoutSun60: Workout = {
   ],
 };
 
+const workoutVacuum: Workout = {
+  id: 404,
+  title: "Вакуум",
+  day: "всегда",
+  difficulty: WorkoutDifficulty.Beginner,
+  image: { src: "/stock-row-small.webp", lqip: 57377 },
+  averageDurationSeconds: 60 * 5,
+  sets: [
+    {
+      exercises: [{ type: "time", exercise: EX.vacuum, count: 30 }],
+      restSeconds: 30,
+      repeatCount: 3,
+    },
+  ],
+};
+
 export const PROGRAM: Workout[] = [
+  workoutVacuum,
   workoutDailyAM,
   workoutDailyPM,
   workoutMon30,

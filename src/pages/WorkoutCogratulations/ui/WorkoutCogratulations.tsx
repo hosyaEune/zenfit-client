@@ -13,14 +13,19 @@ import { TbBarbellFilled } from "react-icons/tb";
 import { Link } from "react-router";
 import { Item } from "./Item";
 import { PATHS } from "@/constants";
+import { useEffect } from "react";
+import axios from "axios";
+import type { Workout } from "@/shared/api/model";
 
 type Props = {
+  workout: Workout;
   countExercises: number;
   expendSeconds: number;
   expendCalories: number;
 };
 
 export default function WorkoutCogratulations({
+  workout,
   countExercises,
   expendSeconds,
   expendCalories,
@@ -42,6 +47,20 @@ export default function WorkoutCogratulations({
       count: expendCalories,
     },
   ];
+
+  useEffect(() => {
+    axios
+      .post("/sw/__history/", {
+        workoutId: workout.id,
+        countExercises,
+        expendSeconds,
+        expendCalories,
+        date: new Date(),
+      })
+      .then(() => {
+        console.log("zdec");
+      });
+  }, [workout.id]);
 
   return (
     <PageWithPadding alignItems="center" justifyContent="space-between">

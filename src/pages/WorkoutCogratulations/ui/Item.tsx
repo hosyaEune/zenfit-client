@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const Item: FC<Props> = ({ icon, count, description }) => (
-  <Flex flexDirection="column" align="center" gap={2}>
+  <Flex direction="column" align="center" gap={2}>
     {icon}
     <Span fontSize="xl" fontWeight="bold">
       {count}
