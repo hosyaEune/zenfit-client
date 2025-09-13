@@ -86,9 +86,7 @@ export default function Workout() {
     return (
       <WorkoutCogratulations
         workout={workout}
-        expendSeconds={TimeHelper.getMinutes(
-          (Number(new Date()) - Number(startDate.current)) / 1000
-        )}
+        expendSeconds={(Number(new Date()) - Number(startDate.current)) / 1000}
         countExercises={allExercise.length - restCount - skipCount.current}
         expendCalories={Number(calRef.current.toFixed(0))}
       />

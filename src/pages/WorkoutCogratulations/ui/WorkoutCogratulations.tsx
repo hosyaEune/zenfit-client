@@ -1,66 +1,29 @@
 import { PageWithPadding } from "@/shared/ui/PageWithPadding";
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Image,
-  Span,
-  Text,
-} from "@chakra-ui/react";
-import { AiFillClockCircle, AiFillFire } from "react-icons/ai";
-import { TbBarbellFilled } from "react-icons/tb";
+import { Button, Flex, Heading, Image, Span, Text } from "@chakra-ui/react";
+
 import { Link } from "react-router";
-import { Item } from "./Item";
 import { PATHS } from "@/constants";
-import { useEffect } from "react";
+import { useEffect, type ComponentProps } from "react";
 import axios from "axios";
 import type { Workout } from "@/shared/api/model";
+import { InformationBlock } from "@/features/InformationBlock";
 
 type Props = {
   workout: Workout;
-  countExercises: number;
-  expendSeconds: number;
-  expendCalories: number;
-};
+} & ComponentProps<typeof InformationBlock>;
 
-export default function WorkoutCogratulations({
-  workout,
-  countExercises,
-  expendSeconds,
-  expendCalories,
-}: Props) {
-  const items = [
-    {
-      icon: <TbBarbellFilled size={26} />,
-      description: "extensions",
-      count: countExercises,
-    },
-    {
-      icon: <AiFillClockCircle size={26} />,
-      description: "minutes",
-      count: expendSeconds,
-    },
-    {
-      icon: <AiFillFire size={26} />,
-      description: "kkal",
-      count: expendCalories,
-    },
-  ];
-
+export default function WorkoutCogratulations({ workout, ...props }: Props) {
   useEffect(() => {
     axios
       .post("/sw/__history/", {
         workoutId: workout.id,
-        countExercises,
-        expendSeconds,
-        expendCalories,
+        ...props,
         date: new Date(),
       })
       .then(() => {
         console.log("zdec");
       });
-  }, [workout.id]);
+  }, [workout.id, props]);
 
   return (
     <PageWithPadding alignItems="center" justifyContent="space-between">
@@ -73,13 +36,7 @@ export default function WorkoutCogratulations({
           you're completed the workout!
         </Text>
       </Flex>
-      <Flex width="100%">
-        {items.map((item) => (
-          <Box key={item.description} flexBasis="33%">
-            <Item {...item} />
-          </Box>
-        ))}
-      </Flex>
+      <InformationBlock {...props} />
       <Flex width="100%" gap={4}>
         <Button
           as={Link}

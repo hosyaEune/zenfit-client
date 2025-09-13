@@ -12,19 +12,8 @@ import { useGlobalPreloadData } from "@/shared/hooks/useGlobalPreloadData";
 import { ImageWithLQIP } from "@/shared/ui/ImageWithLQIP";
 import { TimeHelper } from "@/shared/helpers/Time";
 import { TbBarbellFilled } from "react-icons/tb";
-import { AiFillClockCircle, AiFillFire } from "react-icons/ai";
-
-const SpinBlock: FC = () => (
-  <Center height="100%" width="100%">
-    <Spinner color="blue" />
-  </Center>
-);
-
-// const ListItem: FunctionComponent<{}> = () => {
-//   return (
-
-//   )
-// }
+import { AiOutlineClockCircle, AiOutlineFire } from "react-icons/ai";
+import { SpinBlock } from "@/shared/ui/SpinBlock";
 
 const List: FunctionComponent<{
   date: dayjs.Dayjs;
@@ -64,12 +53,12 @@ const List: FunctionComponent<{
       text: programs.length,
     },
     {
-      icon: AiFillClockCircle,
+      icon: AiOutlineClockCircle,
       iconColor: "green",
       text: `${minutes} mins`,
     },
     {
-      icon: AiFillFire,
+      icon: AiOutlineFire,
       iconColor: "orange",
       text: `${kkal} kkal`,
     },
