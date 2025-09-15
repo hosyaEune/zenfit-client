@@ -133,15 +133,7 @@ async function updateHistoryListCacheAfterPost(
     let toAppend = await requestClone.json();
 
     if (toAppend !== null) {
-      const nextList = currentList;
-
-      if (
-        currentList.length === 0 ||
-        // @ts-ignore
-        toAppend.date !== currentList[currentList.length - 1].date
-      ) {
-        nextList.push(toAppend);
-      }
+      const nextList = [...currentList, toAppend];
 
       const resp = new Response(JSON.stringify(nextList), {
         headers: {

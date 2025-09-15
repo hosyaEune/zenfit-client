@@ -38,6 +38,10 @@ const AppWithProviders = composeProviders(App);
 
 export default AppWithProviders;
 
+export function shouldRevalidate() {
+  return false;
+}
+
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = "Oops!";
   let details = "An unexpected error occurred.";
