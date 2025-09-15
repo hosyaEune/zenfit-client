@@ -3,22 +3,24 @@ import { Button, Flex, Heading, Image, Span, Text } from "@chakra-ui/react";
 
 import { Link } from "react-router";
 import { PATHS } from "@/constants";
-import { useEffect, type ComponentProps } from "react";
+import { useEffect, useRef, type ComponentProps } from "react";
 import axios from "axios";
 import type { Workout } from "@/shared/api/model";
 import { InformationBlock } from "@/features/InformationBlock";
 
 type Props = {
   workout: Workout;
+  endDate: Date;
 } & ComponentProps<typeof InformationBlock>;
 
 export default function WorkoutCogratulations({ workout, ...props }: Props) {
+  // TODO: после перехода обновляется весь компонент Workout, как я понял, из-за react-router
   useEffect(() => {
     axios
       .post("/sw/__history/", {
         workoutId: workout.id,
         ...props,
-        date: new Date(),
+        date: props.endDate,
       })
       .then(() => {
         console.log("zdec");

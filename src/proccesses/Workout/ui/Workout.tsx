@@ -2,10 +2,9 @@ import { WorkoutCogratulations } from "@/pages/WorkoutCogratulations";
 import { WorkoutExercise } from "@/pages/WorkoutExercise";
 import { WorkoutPreview } from "@/pages/WorkoutPreview";
 import type { Workout } from "@/shared/api/model";
-import { TimeHelper } from "@/shared/helpers/Time";
 import { useGlobalPreloadData } from "@/shared/hooks/useGlobalPreloadData";
 import { Text } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { memo, useRef, useState, type FC } from "react";
 import { useParams } from "react-router";
 
 const useGetWorkoutById = (id: string | number) => {
@@ -64,51 +63,29 @@ const useGetWorkoutById = (id: string | number) => {
   };
 };
 
-const previewIndex = -1;
-
 const exerciseCalories = (MET: number, weight: number, minutes: number) =>
   0.0175 * MET * weight * minutes;
 
-export default function Workout() {
+const Workout: FC = memo(() => {
+  const [page, setPage] = useState<"preview" | "exercise" | "cogratulations">(
+    "preview"
+  );
   const { user, settings } = useGlobalPreloadData();
 
-  const [currentExerciseIndex, setCurrentExerciseIndex] =
-    useState<number>(previewIndex);
+  const [currentExerciseIndex, setCurrentExerciseIndex] = useState<number>(0);
   const params = useParams();
   const skipCount = useRef(0);
   const startDate = useRef(new Date());
+  const endDate = useRef(new Date());
   const calRef = useRef<number>(0);
   const exerciseStartTime = useRef(new Date());
   const { id } = params;
   const { allExercise, restCount, workout } = useGetWorkoutById(id ?? "0");
 
-  if (workout && currentExerciseIndex > allExercise.length - 1) {
-    return (
-      <WorkoutCogratulations
-        workout={workout}
-        expendSeconds={(Number(new Date()) - Number(startDate.current)) / 1000}
-        countExercises={allExercise.length - restCount - skipCount.current}
-        expendCalories={Number(calRef.current.toFixed(0))}
-      />
-    );
-  }
-
   const currentExercise = allExercise[currentExerciseIndex];
 
   if (!workout) {
     return <Text>Loading...</Text>;
-  }
-
-  if (!currentExercise) {
-    return (
-      <WorkoutPreview
-        {...workout}
-        onClick={() => {
-          startDate.current = new Date();
-          setCurrentExerciseIndex(0);
-        }}
-      />
-    );
   }
 
   const onNextHandler = () => {
@@ -133,7 +110,7 @@ export default function Workout() {
   };
 
   const onCancelHandler = () => {
-    setCurrentExerciseIndex(previewIndex);
+    setPage("preview");
   };
 
   const onSkipHandler = () => {
@@ -144,16 +121,54 @@ export default function Workout() {
     onNextHandler();
   };
 
-  return (
-    <WorkoutExercise
-      {...currentExercise}
-      currentExercise={currentExerciseIndex}
-      countExercises={allExercise.length}
-      onSkip={onSkipHandler}
-      onFinish={onNextHandler}
-      onCancel={onCancelHandler}
-      onPrev={onPrevHandler}
-      onDone={onNextHandler}
-    />
-  );
-}
+  const onFinishHandler = () => {
+    setPage("cogratulations");
+
+    endDate.current = new Date();
+
+    onNextHandler();
+  };
+
+  switch (page) {
+    case "exercise":
+      return (
+        <WorkoutExercise
+          {...currentExercise}
+          currentExercise={currentExerciseIndex}
+          countExercises={allExercise.length}
+          onSkip={onSkipHandler}
+          onFinish={onFinishHandler}
+          onCancel={onCancelHandler}
+          onPrev={onPrevHandler}
+          onDone={onNextHandler}
+        />
+      );
+    case "preview":
+      return (
+        <WorkoutPreview
+          {...workout}
+          onClick={() => {
+            startDate.current = new Date();
+
+            setPage("exercise");
+          }}
+        />
+      );
+    case "cogratulations":
+      return (
+        <WorkoutCogratulations
+          workout={workout}
+          expendSeconds={
+            (Number(endDate.current) - Number(startDate.current)) / 1000
+          }
+          countExercises={allExercise.length - restCount - skipCount.current}
+          expendCalories={Number(calRef.current.toFixed(0))}
+          endDate={endDate.current}
+        />
+      );
+  }
+
+  return null;
+});
+
+export default Workout;

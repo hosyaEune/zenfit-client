@@ -15,7 +15,6 @@ const convertDate = (date: string | Date) => dayjs(date).format("YYYY/MM/DD");
 export default function Report() {
   const { data = [], isLoading } = useQuery<
     {
-      // TODO: programId
       workoutId: number;
       countExercises: number;
       expendSeconds: number;

@@ -18,8 +18,7 @@ registerRoute(
 );
 
 registerRoute(
-  ({ request }) =>
-    request.destination === "image" || request.destination === "video",
+  ({ request }) => request.destination === "image",
   new CacheFirst({
     cacheName: "media",
     plugins: [
@@ -119,7 +118,7 @@ async function updateHistoryListCacheAfterPost(
   try {
     const listKey = abs(HISTORY_URL_PATH);
     const cache = await caches.open(HISTORY_CACHE);
-    let currentList: unknown = [];
+    let currentList: unknown[] = [];
     const prev = await cache.match(listKey);
 
     if (prev) {
@@ -134,7 +133,16 @@ async function updateHistoryListCacheAfterPost(
     let toAppend = await requestClone.json();
 
     if (toAppend !== null) {
-      const nextList = [...(currentList as unknown[]), toAppend];
+      const nextList = currentList;
+
+      if (
+        currentList.length === 0 ||
+        // @ts-ignore
+        toAppend.date !== currentList[currentList.length - 1].date
+      ) {
+        nextList.push(toAppend);
+      }
+
       const resp = new Response(JSON.stringify(nextList), {
         headers: {
           "Content-Type": "application/json",
