@@ -88,7 +88,7 @@ const Workout: FC = memo(() => {
     return <Text>Loading...</Text>;
   }
 
-  const onNextHandler = () => {
+  const recalc = () => {
     const deltaSecound =
       (Number(new Date()) - Number(exerciseStartTime.current)) / 1000;
 
@@ -98,6 +98,10 @@ const Workout: FC = memo(() => {
     calRef.current += calories;
 
     exerciseStartTime.current = new Date();
+  };
+
+  const onNextHandler = () => {
+    recalc();
     setCurrentExerciseIndex((prev) => prev + 1);
   };
 
@@ -122,11 +126,10 @@ const Workout: FC = memo(() => {
   };
 
   const onFinishHandler = () => {
-    setPage("cogratulations");
-
     endDate.current = new Date();
+    recalc();
 
-    onNextHandler();
+    setPage("cogratulations");
   };
 
   switch (page) {
