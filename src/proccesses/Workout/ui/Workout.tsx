@@ -131,7 +131,6 @@ const Workout: FC = memo(() => {
 
     setPage("cogratulations");
   };
-
   switch (page) {
     case "exercise":
       return (

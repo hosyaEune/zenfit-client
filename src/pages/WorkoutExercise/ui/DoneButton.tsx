@@ -14,12 +14,21 @@ import type { Props } from "./WorkoutExercise";
 import { useGlobalPreloadData } from "@/shared/hooks/useGlobalPreloadData";
 import { App } from "@/@singleton/App";
 
-export const DoneButton: FC<Props> = ({ type, count, onDone, exercise }) => {
+export const DoneButton: FC<Props> = ({
+  type,
+  count,
+  onDone,
+  exercise,
+  onFinish,
+  currentExercise,
+  countExercises,
+}) => {
   const { settings } = useGlobalPreloadData();
   const [isReady, setIsReady] = useState(type === "reps");
   const [isPause, setIsPause] = useState(
     type === "time" && exercise.id !== settings.restId
   );
+  const isLastExercive = currentExercise === countExercises - 1;
 
   return (
     <>
@@ -48,7 +57,7 @@ export const DoneButton: FC<Props> = ({ type, count, onDone, exercise }) => {
             size="xl"
             rounded="full"
             width="100%"
-            onClick={onDone}
+            onClick={isLastExercive ? onFinish : onDone}
           >
             <AiOutlineCheck size={6} />
             <Span textTransform="capitalize">done</Span>
